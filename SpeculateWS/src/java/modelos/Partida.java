@@ -5,6 +5,7 @@
  */
 package modelos;
 
+import java.util.Random;
 import java.util.Timer;
 
 public class Partida {
@@ -18,7 +19,8 @@ public class Partida {
 	private boolean partidaAcabouPorWO;
 	
 	private Tabuleiro tabuleiro;
-	private Dado dado;
+        
+        private Random gerador;
 
 	/**
 	 * Cria uma nova instancia de partida sendo o jogador 1 o primeiro em ação.
@@ -30,7 +32,6 @@ public class Partida {
 	public Partida(int id) {
 		this.setId(id);
 		this.tabuleiro = new Tabuleiro();
-		this.dado = new Dado();
 	}
 
 	public int getId() {
@@ -53,6 +54,7 @@ public class Partida {
 		}
 		else if (this.jogadores[1] == null) {
 			this.jogadores[1] = jogador;
+                        gerador = new Random(jogadores[0].getId() + jogadores[1].getId());
 			return true;
 		}
 		else {
@@ -131,5 +133,10 @@ public class Partida {
 		this.partidaAcabou = true;
 		this.partidaAcabouPorWO = porWo;
 	}
+        
+        public int valorDado()
+        {
+            return gerador.nextInt(6) + 1;
+        }
 
 }

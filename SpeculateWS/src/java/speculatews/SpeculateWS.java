@@ -348,8 +348,7 @@ public class SpeculateWS {
                 // Joga o dado ate o numero de jogadas definidas pelo usuario
                 Tabuleiro tabuleiro = partida.getTabuleiro();
 
-                Random r = new Random();
-                int resultado = r.nextInt(6) + 1;
+                int resultado = partida.valorDado();
                 if (resultado == 6)
                 {
                     tabuleiro.colocaBolaNaCaneleta();
