@@ -36,7 +36,8 @@ public class SpeculateWSclient {
         int numTestes = rad.length;
         Thread[] threads = new Thread[numTestes];
         for (int i=0;i<numTestes;++i) {
-            String r = rad[i];
+            String r = "src\\\\java\\\\speculatewsclient\\\\" + rad[i];
+            //String r = rad[i];
             threads[i] = new Thread() {
                 @Override
                 public void run() {

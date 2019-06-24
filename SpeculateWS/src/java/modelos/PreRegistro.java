@@ -40,17 +40,11 @@ public class PreRegistro {
     public Tupla getPreRegistro(String chave)
     {
         Tupla t = preRegistro.get(chave);
-        removePreRegistro(chave);
         return t;
     }
     
     public void removePreRegistro(String chave)
     {
         preRegistro.remove(chave);
-    }
-    
-    public boolean preRegistroExiste(String chave){
-        return preRegistro.get(chave) == null;
-    }
-    
+    }   
 }

@@ -7,7 +7,6 @@ package speculatews;
 
 import modelos.Jogador;
 import modelos.Partida;
-import java.lang.reflect.Array;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
@@ -88,12 +87,13 @@ public class SpeculateWS {
             }
             else
             {
-                // Pega o pre registro do jogador.
+                // Pega o pre registro do jogador e deleta da lista de pre registros.
                 PreRegistro.Tupla tupla = preRegistro.getPreRegistro(nome);
+                preRegistro.removePreRegistro(nome);
                 codigo = tupla.jogador1.getId();
                 
                 // Verifica se o seu oponente também já foi registrado.
-                if (preRegistro.preRegistroExiste(tupla.jogador2.getNome()))
+                if (preRegistro.getPreRegistro(tupla.jogador2.getNome()) == null)
                 {
                     Partida novaPartida = new Partida(IDPartidas++);
                     novaPartida.adicionaJogador(tupla.jogador1);
@@ -104,6 +104,12 @@ public class SpeculateWS {
                     jogadores.put(tupla.jogador1.getNome(), tupla.jogador1);
                     jogadores.put(tupla.jogador2.getNome(), tupla.jogador2);
                     
+                    System.out.println("Partida registrada ["
+                            + tupla.jogador1.getNome()
+                            + ", "
+                            + tupla.jogador2.getNome()
+                            + "]"
+                    );
                 }
             }
         }
@@ -111,6 +117,7 @@ public class SpeculateWS {
         {
             System.out.println("Erro em registraJogador.");
             e.printStackTrace();
+            codigo = -10;
         }
         finally
         {
@@ -195,14 +202,16 @@ public class SpeculateWS {
             semaforo.acquire();
 
             Partida partida = getPartida(id);
-
+            if (partida == null)
+                return "";
+            
             if (partida.getJogador1() == null || partida.getJogador2() == null)
                     return "";
 
             if (partida.getJogador1().getId() == id)
-                    return partida.getJogador2().getNome();
+                return partida.getJogador2().getNome();
             else
-                    return partida.getJogador1().getNome();
+                return partida.getJogador1().getNome();
         }
         catch(Exception e)
         {
