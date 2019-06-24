@@ -96,8 +96,8 @@ public class SpeculateWS {
                 if (preRegistro.getPreRegistro(tupla.jogador2.getNome()) == null)
                 {
                     Partida novaPartida = new Partida(IDPartidas++);
-                    novaPartida.adicionaJogador(tupla.jogador1);
                     novaPartida.adicionaJogador(tupla.jogador2);
+                    novaPartida.adicionaJogador(tupla.jogador1);
                     partidas.put(tupla.jogador1.getId(), novaPartida);
                     partidas.put(tupla.jogador2.getId(), novaPartida);
                     
