@@ -25,11 +25,14 @@ public class SpeculateWSclient {
         speculatewsclient.SpeculateWS_Service service = new speculatewsclient.SpeculateWS_Service();
         port = service.getSpeculateWSPort();
 
-        executaTeste("src\\java\\speculatewsclient\\Speculate-0000",false);
-        /*
-        String[] testePar1 = {"Speculate-2000","Speculate-2250","Speculate-2500","Speculate-2750"};
+        // @bruno: o metodo "main" foi o unico alterado para ja deixar os outros arquivos prontos para execucao.
+        //executaTeste("src\\java\\speculatewsclient\\Speculate-3000",false);
+        ///*
+        //String[] testePar1 = {"Speculate-0000", "Speculate-1000"};
+        //String[] testePar1 = {"Speculate-2000","Speculate-2250","Speculate-2500","Speculate-2750"};
+        String[] testePar1 = { "Speculate-3000","Speculate-4000","Speculate-4250","Speculate-4500", "Speculate-4750" };
         executaTesteParalelo(testePar1);
-        */
+        //*/
     }
 
     private static void executaTesteParalelo(String[] rad) throws IOException {

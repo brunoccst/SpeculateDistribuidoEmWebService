@@ -26,7 +26,7 @@ public class SpeculateWS {
     private static final int maxJogadores = 2  * maxPartidas;
     
     // Propriedades que armazenam os dados do jogo.
-    private static Map<Integer, Partida> partidas = new Hashtable<Integer, Partida>(maxPartidas);
+    private static Map<Integer, Partida> partidas = new Hashtable<Integer, Partida>(maxPartidas * 2);
     private static Map<String, Jogador> jogadores = new Hashtable<String, Jogador>(maxJogadores);
     private static int IDPartidas = 0;
     
@@ -71,7 +71,7 @@ public class SpeculateWS {
             semaforo.acquire();
             
             // Retorna -3 se o maximo de pertidas ja foram cadastradas.
-            if (partidas.size() >= maxPartidas)
+            if (partidas.size() >= maxPartidas * 2)
             {
                 codigo = -3;
             }
